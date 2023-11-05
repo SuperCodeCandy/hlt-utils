@@ -1,7 +1,7 @@
 {
-	"name": "@hlt/utils",
+	"name": "@super-code-candy/utils",
 	"version": "0.0.1",
-	"description": "hlt utils",
+	"description": "@super-code-candy utils",
 	"module": "dist/es/index.es.js",
 	"types": "dist/es/index.d.ts",
 	"main": "dist/cjs/index.cjs.js",
@@ -12,10 +12,13 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/hlt-x/hlt-utils-basic"
+		"url": "https://github.com/SuperCodeCandy/super-code-candy-utils-basic"
 	},
-	"homepage": "https://github.com/hlt-x/hlt-utils-basic",
-	"keywords": [],
+	"homepage": "https://github.com/SuperCodeCandy/super-code-candy-utils-basic",
+	"keywords": [
+		"super-code-candy",
+		"utils"
+	],
 	"author": "",
 	"publishConfig": {
 		"access": "public",
