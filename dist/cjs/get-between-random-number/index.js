@@ -8,4 +8,4 @@
  */
 const getBetweenRandomNumber = (minNumber, maxNumber) => Math.floor(Math.random() * (maxNumber - minNumber) + minNumber);
 
-exports.getBetweenRandomNumber = getBetweenRandomNumber;
+module.exports = getBetweenRandomNumber;

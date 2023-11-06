@@ -1,8 +1,36 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.superCodeCandy = {}));
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.supperCodeCandy = {}));
 })(this, (function (exports) { 'use strict';
+
+	/**
+	 *@description 将string转为大驼峰的格式 zh-cn -> ZhCn | zh-cn-cn -> ZhCnCN
+	 * @param str 需要转换的字符
+	 * @param flag 字符标识符 默认值 '-'
+	 * @returns 转化后的数据
+	 */
+	const formatStringToBigHumpString = (str = '', flag = '-') => str
+	    .replace(new RegExp(`(^.{1})|(${flag}\\w{1})`, 'gi'), ($1) => $1.toLocaleUpperCase())
+	    .replace(new RegExp(`${flag}`, 'g'), '');
+
+	/**
+	 *@description 将string转为驼峰的格式 zh-cn -> zhCn | zh-cn-cn -> zhCnCN
+	 * @param str 需要转换的字符
+	 * @param flag 字符标识符 默认值为 '-'
+	 * @returns 转化后的数据
+	 */
+	const formatStringToHumpString = (str = '', flag = '-') => str
+	    .replace(new RegExp(`(${flag}\\w{1})`, 'gi'), ($1) => $1.toLocaleUpperCase())
+	    .replace(new RegExp(`${flag}`, 'g'), '');
+
+	/**
+	 * @description 格式化指定标识转为大写 zh-cn -> zh-CN | zh-cn-cn zh-CN-CN
+	 * @param str 需要格式化的字符串
+	 * @param flag 标识字符 默认为 '-'
+	 * @returns 转化后的数据
+	 */
+	const formatStringToUpperCase = (str = '', flag = '-') => str.replace(new RegExp(`${flag}\\w*`, 'gi'), (s) => s.toLocaleUpperCase());
 
 	/**
 	 * @description 获取两个数之间的随机数
@@ -11,24 +39,6 @@
 	 * @returns  获取到的值
 	 */
 	const getBetweenRandomNumber = (minNumber, maxNumber) => Math.floor(Math.random() * (maxNumber - minNumber) + minNumber);
-
-	/**
-	 * @description 睡眠函数
-	 * @param timer 需要睡眠多久 默认1000ms
-	 * @returns Promise<number>
-	 */
-	const sleep = (timer = 1000) => new Promise((resolve) => {
-	    setTimeout(() => {
-	        resolve(timer);
-	    }, timer);
-	});
-	/**
-	 * @description 随机随眠时间
-	 * @param minTime 最小睡眠时间 默认值 500
-	 * @param maxTime 最大睡眠时间 默认值 5000
-	 * @returns Promise<number>
-	 */
-	const randomSleep = (minTime = 500, maxTime = 5000) => sleep(getBetweenRandomNumber(minTime, maxTime));
 
 	/**
 	 * @description 解析JSON串
@@ -44,35 +54,29 @@
 	        return initValue !== null && initValue !== void 0 ? initValue : {};
 	    }
 	};
+
 	/**
-	 * @description 格式化指定标识转为大写 zh-cn -> zh-CN | zh-cn-cn zh-CN-CN
-	 * @param str 需要格式化的字符串
-	 * @param flag 标识字符 默认为 '-'
-	 * @returns 转化后的数据
+	 * @description 睡眠函数
+	 * @param timer 需要睡眠多久 默认1000ms
+	 * @returns Promise<number>
 	 */
-	const formatStringToUpperCase = (str = '', flag = '-') => str.replace(new RegExp(`${flag}\\w*`, 'gi'), (s) => s.toLocaleUpperCase());
+	const sleep = (timer = 1000) => new Promise((resolve) => {
+	    setTimeout(() => {
+	        resolve(timer);
+	    }, timer);
+	});
+
 	/**
-	 *@description 将string转为大驼峰的格式 zh-cn -> ZhCn | zh-cn-cn -> ZhCnCN
-	 * @param str 需要转换的字符
-	 * @param flag 字符标识符 默认值 '-'
-	 * @returns 转化后的数据
+	 * @description 随机随眠时间
+	 * @param minTime 最小睡眠时间 默认值 500
+	 * @param maxTime 最大睡眠时间 默认值 5000
+	 * @returns Promise<number>
 	 */
-	const formatStringToBigHumpString = (str = '', flag = '-') => str
-	    .replace(new RegExp(`(^.{1})|(${flag}\\w{1})`, 'gi'), ($1) => $1.toLocaleUpperCase())
-	    .replace(new RegExp(`${flag}`, 'g'), '');
-	/**
-	 *@description 将string转为驼峰的格式 zh-cn -> zhCn | zh-cn-cn -> zhCnCN
-	 * @param str 需要转换的字符
-	 * @param flag 字符标识符 默认值为 '-'
-	 * @returns 转化后的数据
-	 */
-	const formatStringToHumpString = (str = '', flag = '-') => str
-	    .replace(new RegExp(`(${flag}\\w{1})`, 'gi'), ($1) => $1.toLocaleUpperCase())
-	    .replace(new RegExp(`${flag}`, 'g'), '');
+	const randomSleep = (minTime = 500, maxTime = 5000) => sleep(getBetweenRandomNumber(minTime, maxTime));
 
 	exports.formatStringToBigHumpString = formatStringToBigHumpString;
 	exports.formatStringToHumpString = formatStringToHumpString;
-	exports.formatStringToUpperCase = formatStringToUpperCase;
+	exports.formatStringToUppercase = formatStringToUpperCase;
 	exports.getBetweenRandomNumber = getBetweenRandomNumber;
 	exports.jsonParse = jsonParse;
 	exports.randomSleep = randomSleep;
