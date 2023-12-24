@@ -1,14 +1,14 @@
 {
 	"name": "@super-code-candy/utils",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "@super-code-candy utils",
 	"module": "dist/es/index.es.js",
 	"types": "dist/es/index.d.ts",
 	"main": "dist/cjs/index.cjs.js",
 	"browser": "dist/umd/index.js",
 	"scripts": {
-		"push:p": "npm version patch -m 'version: update version to %s' && git push",
-		"push:m": "npm version major -m 'version: update version to %s' && git push"
+		"push:p": "npm version patch -m 'version: update version to %s'",
+		"push:m": "npm version major -m 'version: update version to %s'"
 	},
 	"repository": {
 		"type": "git",
