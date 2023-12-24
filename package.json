@@ -1,6 +1,6 @@
 {
 	"name": "@super-code-candy/utils",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "@super-code-candy utils",
 	"module": "dist/es/index.es.js",
 	"types": "dist/es/index.d.ts",
